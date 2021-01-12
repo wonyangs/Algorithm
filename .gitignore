@@ -1,3 +1,5 @@
 goorm.manifest
 
 solve.py
+
+__pycache__
