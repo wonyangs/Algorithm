@@ -6,15 +6,10 @@ input = sys.stdin.readline
 
 N = int(input())
 
-d = [0] * (N+1)
-
-P = list(map(int, input().split()))
-P.insert(0, 0)
+d = [0] + list(map(int, input().split()))
 
 for i in range(1, N+1):
-    tmp = []
-    for j in range(i):
-        tmp.append(P[i-j]+d[j])
-    d[i] = max(tmp)
+    for j in range(1, (i+2)//2):
+        d[i] = max(d[i], d[j] + d[i-j])
 
 print(d[N])
