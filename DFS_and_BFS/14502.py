@@ -1,4 +1,4 @@
-# Solved on 2021. 09. 11.
+# Solved on 2021. 09. 12.
 # 14502 연구소
 
 from collections import deque
@@ -17,8 +17,7 @@ def bfs(x, y, array):
     while(queue):
         v = queue.popleft()
 
-        x = v[0]
-        y = v[1]
+        x, y = v
 
         for i in range(4):
             nx = x + dx[i]
@@ -56,12 +55,9 @@ safe = []
 for i in range(len(comb)):
     tmp = copy.deepcopy(array)
 
-    ax = comb[i][0][0]
-    ay = comb[i][0][1]
-    bx = comb[i][1][0]
-    by = comb[i][1][1]
-    cx = comb[i][2][0]
-    cy = comb[i][2][1]
+    ax, ay = comb[i][0]
+    bx, by = comb[i][1]
+    cx, cy = comb[i][2]
 
     tmp[ax][ay] = 1
     tmp[bx][by] = 1
