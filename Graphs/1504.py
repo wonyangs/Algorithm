@@ -35,6 +35,7 @@ def dijkstra(start, end):
             if distance[i[0]] > cost:
                 distance[i[0]] = cost
                 heapq.heappush(q, (cost, i[0]))
+
     return distance[end]
 
 
