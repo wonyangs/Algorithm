@@ -38,4 +38,4 @@ def bfs(start):
 arr = bfs(1)
 result = bfs(arr.index(max(arr)))
 
-print(max(result))
+print(max(result)) 
