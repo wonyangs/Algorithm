@@ -5,34 +5,16 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-count = 0
+count = n
+
 for _ in range(n):
     string = list(input().strip())
-    check = True
-    arr = []
-    tmp = string[0]
-    arr.append(tmp)
 
-    for c in string:
-        if tmp == c:
-            check = True
-            continue
-        else:
-            for ch in arr:
-                if ch == c:
-                    check = False
-                    break
-                else:
-                    tmp = c
-
-        if check is False:
+    for i in range(len(string)-1):
+        if string[i] == string[i+1]:
+            pass
+        elif string[i] in string[i+1:]:
+            count -= 1
             break
-        else:
-            arr.append(c)
-
-    if check is True:
-        count += 1
 
 print(count)
-
-
