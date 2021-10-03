@@ -4,14 +4,18 @@
 import sys
 input = sys.stdin.readline
 
-string = input().split('-')
+string = input().strip().split('-')
 
-print(string)
+a = []
+for s in string:
+    hap = 0
+    tmp = s.split('+')
+    for c in tmp:
+        hap += int(c)
+    a.append(hap)
 
+result = a[0]
+for i in range(1, len(a)):
+    result -= a[i]
 
-
-
-
-
-
-
+print(result)
