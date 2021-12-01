@@ -31,12 +31,17 @@ for i in range(2, N+1):
     if nums[i]:
         primeNum.append(i)
 
+if primeNum:
+    prefixNums = [primeNum[0]]
+else:
+    prefixNums = []
+for i in range(1, len(primeNum)):
+    prefixNums.append(prefixNums[-1] + primeNum[i])
 start, end, count = 0, 0, 0
-while end < N:
-    hap = sum(primeNum[start:end+1])
-    if hap == N:
+while end < len(prefixNums):
+    if prefixNums[end] == N or prefixNums[end] - prefixNums[start] == N:
         count += 1
-    if hap < N:
+    if prefixNums[end] - prefixNums[start] < N:
         end += 1
     else:
         start += 1
