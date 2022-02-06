@@ -40,13 +40,12 @@ while time <= 1000 and not gameover:
                 color = map_info[nx][ny]
         
         # 흰색, 빨강일 경우에만 이동
-        if color == 0 or color == 1:
-            to_move_pieces = []
-            to_move_pieces = graph[x][y][idx:]
+        if color == 1:
+            graph[nx][ny] += graph[x][y][idx:][::-1]
             graph[x][y] = graph[x][y][:idx]
-            if color == 1:
-                to_move_pieces.reverse()
-            graph[nx][ny] += to_move_pieces
+        elif color == 0:
+            graph[nx][ny] += graph[x][y][idx:]
+            graph[x][y] = graph[x][y][:idx]
     
         #게임종료 확인
         for i in range(N):
