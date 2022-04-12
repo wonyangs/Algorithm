@@ -73,7 +73,56 @@ public class ch05 {
         return result;
     }
 
-    public static void main(String[] args) {
+    public static boolean canReachEnd(List<Integer> maxAdvanceSteps) {
+        int furthestReachSoFar = 0, lastIndex = maxAdvanceSteps.size() - 1;
+        for (int i = 0; i <= furthestReachSoFar && furthestReachSoFar < lastIndex; ++i) {
+            furthestReachSoFar = Math.max(furthestReachSoFar, i + maxAdvanceSteps.get(i));
+        }
+        return furthestReachSoFar >= lastIndex;
+    }
 
+    public static int deleteDuplicates(List<Integer> A) {
+        if (A.isEmpty()) {
+            return 0;
+        }
+
+        int writeIndex = 1;
+        for (int i = 0; i < A.size(); ++i) {
+            if (!A.get(writeIndex - 1).equals(A.get(i))) {
+                A.set(writeIndex++, A.get(i));
+            }
+        }
+        return writeIndex;
+    }
+
+    public static double computeMaxProfit(List<Double> prices) {
+        double minPrice = Double.MAX_VALUE, maxProfit = 0.0;
+        for (Double price : prices) {
+            maxProfit = Math.max(maxProfit, price - minPrice);
+            minPrice = Math.min(minPrice, price);
+        }
+        return maxProfit;
+    }
+
+    public static double buyAndSellStockTwice(List<Double> prices) {
+        double maxTotalProfit = 0.0;
+        List<Double> firstBuySellProfits = new ArrayList<>();
+        double minPriceSoFar = Double.MAX_VALUE;
+
+        for (int i = 0; i < prices.size(); ++i) {
+            minPriceSoFar = Math.min(minPriceSoFar, prices.get(i));
+            maxTotalProfit = Math.max(maxTotalProfit, prices.get(i) - minPriceSoFar);
+            firstBuySellProfits.add(maxTotalProfit);
+        }
+
+        double maxPriceSoFar = Double.MIN_VALUE;
+        for (int i = prices.size() - 1; i > 0; --i) {
+            maxPriceSoFar = Math.max(maxPriceSoFar, prices.get(i));
+            maxTotalProfit = Math.max(maxTotalProfit, maxPriceSoFar - prices.get(i) + firstBuySellProfits.get(i-1));
+        }
+        return maxTotalProfit;
+    }
+
+    public static void main(String[] args) {
     }
 }
