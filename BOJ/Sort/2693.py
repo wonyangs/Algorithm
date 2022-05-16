@@ -5,4 +5,4 @@ import sys
 input = sys.stdin.readline
 
 for _ in range(int(input())):
-    print(reversed(sorted([*map(int, input().split())])))
+    print([*reversed(sorted([*map(int, input().split())]))][2])
