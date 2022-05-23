@@ -4,7 +4,5 @@
 import sys
 input = sys.stdin.readline
 
-arr = [*map(str, input().split('-'))]
-for i in range(len(arr)):
-    print(arr[i][0], end='')
-print()
+arr = [*map(str, input().strip())]
+print(arr)
