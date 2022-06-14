@@ -3,31 +3,29 @@ from bisect import bisect_left
 
 def solution(n, plans, clients):
     answer = []
+    data = []
+    service = [-1] * (n + 1)
 
-    data = defaultdict(set)
-    total_service = set()
-    for plan in plans:
-        plan_data = plan.split()
-        total_service = total_service.union(plan_data[1:])
-        data[int(plan_data[0])] = total_service
-        print(total_service)
+    for i in range(len(plans)):
+        arr = [*map(int, plans[i].split())]
+        data.append(arr[0])
+        for j in arr[1:]:
+            service[j] = i
     
-    data_key = sorted(data.keys())
-    print(data_key)
-    for i in range(len(clients)):
-        client = clients[i].split()
-        client_data = int(client[0])
-        client_service = set(client[1:])
-
-        for j in range(bisect_left(data_key, client_data), len(data.keys())):
-            if client_data <= data_key[j]:
-                if data[data_key[j]].issubset(client_service):
-                    answer.append(j + 1)
-                    break
-        
-        if len(answer) == i:
+    for client in clients:
+        arr = [*map(int, client.split())]
+        data_min = bisect_left(data, arr[0])
+        service_min = -1
+        is_service = 1
+        for j in arr[1:]:
+            if service[j] == -1:
+                is_service = 0
+                break
+            service_min = max(service_min, service[j])
+        if is_service:
+            answer.append(max(data_min, service_min) + 1)
+        else:
             answer.append(0)
-        print(answer[i])
 
     return answer
 
@@ -37,13 +35,13 @@ def solution(n, plans, clients):
 # clients = ["300 3 5", "1500 1", "100 1 3", "50 1 2"]
 # print(solution(n, plans, clients))
 
-n = 5
+n = 300000
 plans = []
 clients = []
 for i in range(1, 300000):
-    string = str(i * 100) + ' ' + str(i * 2)
+    string = str(i * 100) + ' ' + str(i)
     plans.append(string)
 for j in range(1, 300000):
-    string = str(j * 110) + ' ' + str(j * 2)
+    string = str(j * 110) + ' ' + str(j)
     clients.append(string)
 print(solution(n, plans, clients))
