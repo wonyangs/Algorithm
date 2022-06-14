@@ -31,8 +31,24 @@ def bfs(graph, k):
                     if graph[nx][ny] == '.':
                         next_day.append((nx, ny))
                     visit[nx][ny] = day
+        for v in visit:
+            print(v)
+        print('----')
 
 def solution(grid, k):
     graph = [[*map(str, g)] for g in grid]
 
     return bfs(graph, k)
+
+grid = [".F.FFFFF.F",
+        ".########.",
+        ".########F",
+        "...######F",
+        "##.######F",
+        "...######F",
+        ".########F",
+        ".########.",
+        ".#...####F",
+        "...#......"]
+k = 6
+print(solution(grid, k))
