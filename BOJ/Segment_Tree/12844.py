@@ -66,10 +66,7 @@ init(0, N - 1, 1)
 for _ in range(M):
     cmd = [*map(int, input().split())]
     if cmd[0] == 1:
-        if cmd[1] < cmd[2]:
-            update(0, N - 1, 1, cmd[1], cmd[2], cmd[3])
-        else:
-            update(0, N - 1, 1, cmd[2], cmd[1], cmd[3])
+        update(0, N - 1, 1, cmd[1], cmd[2], cmd[3])
     else:
         res = query(0, N - 1, 1, cmd[1], cmd[2])
         print(res)
