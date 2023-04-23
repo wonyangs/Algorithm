@@ -1,0 +1,2 @@
+R, C, N = map(int, input().split())
+print(((R + N - 1) // N) * ((C + N - 1) // N))
