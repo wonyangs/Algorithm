@@ -1,0 +1,5 @@
+N = int(input())
+s = sum([i for i in range(1, N+1)])
+print(s)
+print(s**2)
+print(s**2)
