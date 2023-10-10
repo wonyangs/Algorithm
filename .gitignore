@@ -2,6 +2,8 @@ goorm.manifest
 
 solve.py
 
+solve.cpp
+
 __pycache__
 
 leetcode.py
