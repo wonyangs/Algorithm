@@ -1,0 +1,5 @@
+s = input()
+print('E' if s[0] == 'I' else 'I', end='')
+print('N' if s[1] == 'S' else 'S', end='')
+print('T' if s[2] == 'F' else 'F', end='')
+print('P' if s[3] == 'J' else 'J', end='')
