@@ -1,0 +1,6 @@
+n = int(input())
+a = list(map(int, input().split()))
+p = a.index(-1)
+lmin = min(a[:p])
+rmin = min(a[p+1:])
+print(lmin + rmin)
