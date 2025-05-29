@@ -1,0 +1,5 @@
+h, w = map(int, input().split())
+a = min(h, w/3)
+b = min(w, h/3)
+c = min(w/2, h/2)
+print(max(a, b, c))
