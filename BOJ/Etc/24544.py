@@ -1,0 +1,7 @@
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+x = sum(a)
+y = sum(v for v, f in zip(a, b) if f == 0)
+print(x)
+print(y)
