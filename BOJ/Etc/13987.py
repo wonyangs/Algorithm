@@ -1,0 +1,5 @@
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+w = sum(i > j for i in a for j in b)
+l = sum(i < j for i in a for j in b)
+print(f"{w / (w + l):.5f}")
